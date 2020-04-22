@@ -6,6 +6,8 @@
 - Sort-of-"encrypts" passwords using XOR bit operator in cpp.
 - The default (and only) password for the program is `password`.
 - The txt file will be stored in ~/Documents.
+- Compile using `make main`.
+- In terminal: `./main`.
 
 TODO:
 Methods used for writing to file will be changed to be object specific.
