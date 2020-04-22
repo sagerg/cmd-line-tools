@@ -7,6 +7,10 @@
 - The default (and only) password for the program is `password`.
 - The txt file will be stored in ~/Documents.
 
+TO RUN:
+`make main`
+`./main`
+
 TODO:
 Methods used for writing to file will be changed to be object specific.
 Create different header files for better readability.
