@@ -11,7 +11,7 @@ Quick search from the terminal to a browser.
 To run:
 
 ```
-./lookup <optional: -browser_flag> <optional: '-w'> <optional: search query or wesbite>
+./lookup <optional: -browser_flag> <optional specifier: '-w'> <optional: search query or wesbite>
 ```
 
 Examples:\
