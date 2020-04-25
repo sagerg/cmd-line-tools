@@ -21,6 +21,17 @@ Examples:\
 `./lookup -help` brings up all the flags that can be used with the program.\
 and `./lookup` just opens "google.com".
 
+
+| Flags         | Meaning       |
+| ------------- |:-------------:|
+| -g            | Google Chrome |
+| -f            | Firefox       |
+| -s            | Safari        |
+| -i            | Internet Expl |
+| -help         | List of flags |
+| -w            | Site specifier|
+
+
 > `./lookup -help` has all the flags for specific browsers.
 
 ### 'watch.cpp'
