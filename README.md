@@ -4,7 +4,7 @@ Cmd line tools for productivity.
 
 > Compile the program to run (using make or gcc/g++ in linux / macOS).
 
-### 'lookup'
+### 'lookup.cpp'
 
 Quick search from the terminal to a browser.
 
@@ -20,7 +20,7 @@ Examples:\
 `./lookup what is valgrind` opens default browser and searches "what is valgrind".\
 and `./lookup` just opens "google.com".
 
-### 'watch'
+### 'watch.cpp'
 
 Quick link to YouTube search.
 
@@ -30,7 +30,7 @@ To run:
 ./watch <optional: search query>
 ```
 
-### 'password'
+### 'password.cpp'
 
 Stores password in a file.\
 Passwords written to file will be encrypted.\
