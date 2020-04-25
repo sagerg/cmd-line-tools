@@ -16,9 +16,9 @@ To run:
 
 Examples:\
 `./lookup -g how to use git` opens Google Chrome and searches "how to use git".\
-`./lookup -s -w www.github.com` open Safari and goes directly to the Github website.\
+`./lookup -s -w www.github.com` opens Safari and goes directly to the Github website.\
 `./lookup what is valgrind` opens default browser and searches "what is valgrind".\
-`./lookup -help` brings up help doc.\
+`./lookup -help` brings up all the flags that can be used with the program.\
 and `./lookup` just opens "google.com".
 
 > `./lookup -help` has all the flags for specific browsers.
@@ -32,13 +32,15 @@ To run:
 ```
 ./watch <optional: search query>
 ```
+Example: `./watch lo fi` will pull up YouTube with query "lo+fi".
 
 ### 'password.cpp'
 
 Stores password in a file.\
 Passwords written to file will be encrypted.\
-File path: (home director)/passwords\
+File path: <home directory>/passwords\
 
-To run: `./password`
+To run: `./password`\
+A menu numbered 1 to 4 will be displayed in terminal.
 
 Any feedback is greatly appreciated!
