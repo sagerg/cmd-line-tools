@@ -19,9 +19,9 @@ Examples:\
 `./lookup -s -w www.github.com` open Safari and goes directly to the Github website.\
 `./lookup what is valgrind` opens default browser and searches "what is valgrind".\
 `./lookup -help` brings up help doc.\
-and `./lookup` just opens "google.com".\
+and `./lookup` just opens "google.com".
 
-`./lookup -help` has all the flags for specific browsers.
+> `./lookup -help` has all the flags for specific browsers.
 
 ### 'watch.cpp'
 
