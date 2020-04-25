@@ -1,18 +1,41 @@
-# cpp-password-reader
+# cmd-line-tools
 
-> CPP Program to store passwords in a txt file.
+Cmd line tools for productivity.\
 
-- Short program that creates a txt file to store passwords.
-- Sort-of-"encrypts" passwords using XOR bit operator in cpp.
-- The default (and only) password for the program is `password`.
-- The txt file will be stored in ~/Documents.
-- Compile using `make main`.
-- In terminal: `./main`.
+> Compile the program to run (using make or gcc/g++ in linux / macOS).
 
-TO RUN:
-`make main`
-`./main`
+### 'lookup'
 
-TODO:
-Methods used for writing to file will be changed to be object specific.
-Create different header files for better readability.
+Quick search from the terminal to a browser.\
+
+To run:
+
+```
+./lookup <optional: -browser_flag> <optional: '-w'> <optional: search query or wesbite>
+```
+
+Examples:\
+`./lookup -g how to use git` opens Google Chrome and searches "how to use git".\
+`./lookup -s -w www.github.com` open Safari and goes directly to the Github website.\
+`./lookup what is valgrind` opens default browser and searches "what is valgrind".\
+and `./lookup` just opens "google.com".\
+
+### 'watch'
+
+Quick link to YouTube search.\
+
+To run:
+
+```
+./watch <optional: search query>
+```
+
+### 'password'
+
+Stores password in a file.\
+Passwords written to file will be encrypted.\
+File path: (home director)/passwords\
+
+To run: `./password`\
+
+Any feedback is greatly appreciated!

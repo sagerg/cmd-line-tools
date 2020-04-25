@@ -1,10 +1,11 @@
+// Program stores passwords
+
 #include <iostream>
 #include <string>
 #include <fstream>
 
 const std::string HOME = getenv("HOME");
-const std::string PATH = HOME + "/Documents/passwords.txt";
-const std::string DEF_PASS = "password"; // <-- lol
+const std::string PATH = HOME + "/passwords.txt";
 
 //I/O BUFFER FOR READ/WRITE
 struct Record
@@ -12,7 +13,6 @@ struct Record
   std::string description;
   std::string name;
   std::string password;
-  // bool isDeleted // <-- TODO
 };
 
 void addPass(std::fstream &);
@@ -21,22 +21,13 @@ void editPass(std::fstream &);
 std::string encrypt(std::string, std::string const &);
 std::string decrypt(std::string const &, std::string const &);
 
-int main()
+int main(int argc, char **argv)
 {
   using namespace std;
 
   string pass;
   fstream inFile;
   int choice;
-
-  //LOG IN
-  cout << "password: ";
-  getline(cin, pass);
-  while (pass != DEF_PASS)
-  {
-    cout << "password: ";
-    getline(cin, pass);
-  }
 
   //MENU
   do
@@ -71,9 +62,6 @@ int main()
   } while (choice != 4);
   return 0;
 }
-
-//TODO DELETE FUNCTION
-//TODO SEARCH FUNCTION
 
 //ADD PASSWORD TO END OF FILE
 void addPass(std::fstream &inFile)
@@ -164,8 +152,9 @@ void editPass(std::fstream &inFile)
 
   //OPEN FILE
   inFile.open(PATH, ios::binary | ios::in | ios::ate | ios::out);
-  Record r;   //struct as input buffer
-  int record; //stores record number
+  Record r;     //struct as input buffer
+  Record check; //storage for checking EOF
+  int record;   //stores record number
 
   //VIEW RECORD
   cout << "\nRecord Number: ";
