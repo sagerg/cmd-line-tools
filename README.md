@@ -49,7 +49,7 @@ Example: `./watch lo fi` will pull up YouTube with query "lo+fi".
 
 Stores password in a file.\
 Passwords written to file will be encrypted.\
-File path: home directory/passwords
+File path: `home directory/passwords`
 
 To run: `./password`
 A menu numbered 1 to 4 will be displayed in terminal.
