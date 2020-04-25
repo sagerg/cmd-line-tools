@@ -27,7 +27,7 @@ and `./lookup` just opens "google.com".
 | -g            | Google Chrome |
 | -f            | Firefox       |
 | -s            | Safari        |
-| -i            | Internet Expl |
+| -i            | Internet Explorer |
 | -help         | List of flags |
 | -w            | Site specifier|
 
