@@ -1,6 +1,8 @@
 #include <string>
 #include <iostream>
 #include <unordered_map>
+#include <stdio.h>
+#include <string.h>
 
 int isInMap(std::unordered_map<std::string, std::string> m, std::string key);
 void displayHelp();
