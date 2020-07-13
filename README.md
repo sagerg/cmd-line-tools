@@ -18,8 +18,8 @@ Examples:<br/><br/>
 `./lookup -s -w www.github.com` opens Safari and goes directly to the Github website.\
 `./lookup what is valgrind` opens default browser and searches "what is valgrind".\
 `./lookup -help` brings up all the flags that can be used with the program.\
-and `./lookup` just opens "google.com".<br/><br/><br/>
-<br/>`./lookup -help` has all the flags for specific browsers.<br/>
+and `./lookup` just opens "google.com".<br/>
+<br/>`./lookup -help` has all the flags for specific browsers.<br/><br/><br/>
 | Flags         | Meaning       |
 | ------------- |:-------------:|
 | -g            | Google Chrome |
