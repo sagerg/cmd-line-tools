@@ -27,8 +27,8 @@ and `./lookup` just opens "google.com".<br/><br/><br/>
 | -s            | Safari        |
 | -i            | Internet Explorer |
 | -help         | List of flags |
-| -w            | Site specifier|\
-<br/><br/>
+| -w            | Site specifier|
+
 ### 'watch.cpp'
 Quick link to YouTube search.
 To run:
