@@ -19,6 +19,7 @@ Examples:<br/><br/>
 `./lookup what is valgrind` opens default browser and searches "what is valgrind".\
 `./lookup -help` brings up all the flags that can be used with the program.\
 and `./lookup` just opens "google.com".<br/><br/><br/>
+<br/>`./lookup -help` has all the flags for specific browsers.<br/>
 | Flags         | Meaning       |
 | ------------- |:-------------:|
 | -g            | Google Chrome |
@@ -27,7 +28,7 @@ and `./lookup` just opens "google.com".<br/><br/><br/>
 | -i            | Internet Explorer |
 | -help         | List of flags |
 | -w            | Site specifier|\
-`./lookup -help` has all the flags for specific browsers.<br/><br/>
+<br/><br/>
 ### 'watch.cpp'
 Quick link to YouTube search.
 To run:
