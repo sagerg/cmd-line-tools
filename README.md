@@ -27,6 +27,7 @@ and `./lookup` just opens "google.com".<br/><br/><br/>
 | -i            | Internet Explorer |
 | -help         | List of flags |
 | -w            | Site specifier|
+<br/>
 `./lookup -help` has all the flags for specific browsers.<br/><br/>
 ### 'watch.cpp'
 Quick link to YouTube search.
