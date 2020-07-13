@@ -4,6 +4,19 @@ Cmd line tools for productivity.
 
 > Compile the program to run (using make or gcc/g++ in linux / macOS).
 
+
+
+### 'password.cpp'
+
+Stores password in a file.\
+Passwords written to file will be encrypted.\
+File path: `home directory/passwords`
+
+To run: `./password`
+A menu numbered 1 to 4 will be displayed in terminal.
+
+
+
 ### 'lookup.cpp'
 
 Quick search from the terminal to a browser.
@@ -34,6 +47,8 @@ and `./lookup` just opens "google.com".
 
 > `./lookup -help` has all the flags for specific browsers.
 
+
+
 ### 'watch.cpp'
 
 Quick link to YouTube search.
@@ -44,14 +59,5 @@ To run:
 ./watch <optional: search query>
 ```
 Example: `./watch lo fi` will pull up YouTube with query "lo+fi".
-
-### 'password.cpp'
-
-Stores password in a file.\
-Passwords written to file will be encrypted.\
-File path: `home directory/passwords`
-
-To run: `./password`
-A menu numbered 1 to 4 will be displayed in terminal.
 
 Any feedback is greatly appreciated!
