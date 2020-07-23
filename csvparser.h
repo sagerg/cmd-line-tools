@@ -140,7 +140,7 @@ void editfl(const char *filename)
     std::getline(std::cin, username);
     if (std::find(usernames.begin(), usernames.end(), username) == usernames.end())
     {
-        std::cout << "Unable to locate " + username + "in FILE: " + filename << std::endl;
+        std::cout << "Unable to locate " + username + " in FILE: " + filename << std::endl;
         return;
     }
     for (unsigned i = 0; i < usernames.size(); ++i)
