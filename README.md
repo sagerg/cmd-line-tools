@@ -16,14 +16,35 @@ This repo is a collection of CLI apps, scripts, etc. Mostly built with C++.
 
 ## Usage:
 
-- Read from a csv file: `./app r`
-- Write a new entry: `./app w`
-- Edit or delete an entry: `./app w`
-- How-to page: `./app`
+Read from a csv file: `./app r`
+
+```sh
+Usernames in current CSV:
+John Doe
+Retrieving data from u/ |
+```
+
+Write a new entry: `./app w`
+
+```sh
+Write Mode:
+Info:
+Username: |
+```
+
+Edit or delete an entry: `./app e`
+
+```sh
+John Doe
+Tim Apple
+Edit u/ |
+```
+
+How-to page: `./app`
 
 By default, your csv file shoud be named 'passwords.csv'. To change this and use any filename, edit line 4 of 'passwords.cpp'. Then compile with gcc or clang with -std=c++11 or up.
 
-## Lookup
+# Lookup
 
 - Main File: lookup.cpp
 - Lookup takes all command line arguments as query for web searching.
