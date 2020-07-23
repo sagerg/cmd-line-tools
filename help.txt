@@ -1,0 +1,40 @@
+
+
+
+*=======================================*
+*   TERMINAL BASED PASSWORD MANAGER     *
+*=======================================*
+
+@author Sage Garcia
+@date Jul 22, 2020
+@language C++
+
+FLAGS ALLOWED:
+
+- r: read csv entries
+- w: write a csv entry
+- e: edit, overwrite, or delete csv entry
+
+USAGE: ./{executable} {flag}
+
+SPECIFICS:
+
+- WRITING TO A FILE
+    - Possible escape sequences: 'quit()' or Ctrl + C on Linux/MacOS.
+
+- DELETING AN ENTRY
+    - Enter edit mode.
+    - Pick an account.
+    - When asked for a new username, type 'delete()' and hit enter.
+
+NOTES:
+
+- All password entries (2nd column) are encrypted based on B64 and Vigenere ciper (symmetric cipher). 
+    - Thanks github/philipperemy!
+- Etc column left for the user for general use.
+
+GITHUB: https://github.com/sagerg
+WEBSITE: https://sagerg.github.io/
+
+
+

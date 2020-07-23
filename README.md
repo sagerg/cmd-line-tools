@@ -1,39 +1,57 @@
-# cmd-line-tools
-Cmd line tools for productivity.
-Compile the program to run (using make or gcc/g++ in linux / macOS).<br/><br/>
-### 'password.cpp'
-Stores password in a file.\
-Passwords written to file will be encrypted.\
-File path: `home directory/passwords`
-To run: `./password`
-A menu numbered 1 to 4 will be displayed in terminal.<br/><br/>
-### 'lookup.cpp'
-Quick search from the terminal to a browser.
-To run:
-```
-./lookup <optional: -browser_flag> <optional specifier: '-w'> <optional: search query or wesbite>
-```
-Examples:<br/><br/>
-`./lookup -g how to use git` opens Google Chrome and searches "how to use git".\
-`./lookup -s -w www.github.com` opens Safari and goes directly to the Github website.\
-`./lookup what is valgrind` opens default browser and searches "what is valgrind".\
-`./lookup -help` brings up all the flags that can be used with the program.\
-and `./lookup` just opens "google.com".<br/>
-<br/>`./lookup -help` has all the flags for specific browsers.<br/>
-| Flags         | Meaning       |
-| ------------- |:-------------:|
-| -g            | Google Chrome |
-| -f            | Firefox       |
-| -s            | Safari        |
-| -i            | Internet Explorer |
-| -help         | List of flags |
-| -w            | Site specifier|
+# Command Line Tools
 
-### <br/><br/>'watch.cpp'
-Quick link to YouTube search.
-To run:
-```
-./watch <optional: search query>
-```
-Example: `./watch lo fi` will pull up YouTube with query "lo+fi".<br/><br/><br/>
-Any feedback is greatly appreciated!
+This repo is a collection of CLI apps, scripts, etc. Mostly built with C++.
+
+- Password Manager: CSV file management encrypted with B64.
+- Lookup: Search the internet in the terminal.
+
+# Password Manager
+
+- Main File: password.cpp
+- Encryption based on Base64 and Vigenere cipher.
+- Compatibility with Linux/Unix and MacOS.
+
+## Usage:
+
+- Read from a csv file: `./app r`
+- Write a new entry: `./app w`
+- Edit or delete an entry: `./app w`
+- How-to page: `./app`
+
+By default, your csv file shoud be named 'passwords.csv'. To change this, edit line 4 of 'passwords.cpp'. Then compile with gcc or clang with -std=c++11 or up.
+
+## Lookup
+
+- Main File: lookup.cpp
+- Lookup takes all command line arguments as query for web searching.
+- Compatibility with Linux/Unix and MacOS.
+
+### If installed, these flags will open specific browsers:
+
+- `-g`: opens with Google Chrome
+- `-f`: opens with Firefox
+- `-s`: opens with Safari
+- `i`: opens with IE
+- `-help`: displays how-to page
+- `-w`: for entering an absolute URL
+
+## Usage:
+
+- Searches 'how many ounces in a cup' in your default browser: `./lookup How many ounces in a cup`
+- Searches using Google Chrome (if installed): `./lookup -g how to use git`
+- Bring up how-to page: `./lookup -help`
+
+### Is that it?
+
+Fow now, yes. Will update this every now and then. :-)
+
+### Todos
+
+- Write MORE Tests
+- Add more CLI tools
+
+## License
+
+BSD 3 Clause
+
+Last updated: Jul 2020
