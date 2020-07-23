@@ -173,7 +173,7 @@ void editfl(const char *filename)
                     std::cout << "Username: ";
                     std::getline(std::cin, entry[0]);
                 }
-                if (username == "quit()")
+                if (entry[0] == "quit()")
                 {
                     file.close();
                     return;
