@@ -123,7 +123,7 @@ void editfl(const char *filename)
         usernames = doc.GetColumn<std::string>(COL1);
         passwords = doc.GetColumn<std::string>(COL2);
         etc = doc.GetColumn<std::string>(COL3);
-        file.open(filename);
+        file.open(filename, std::fstream::out | std::fstream::app);
     }
     catch (const std::ios_base::failure &ex)
     {

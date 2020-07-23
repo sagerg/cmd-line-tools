@@ -7,8 +7,8 @@
 #include <vector>
 #include <string>
 #include <cstdio>
-#include "../rapidcsv/rapidcsv.h"
-#include "../easy-encryption/encrypt.h"
+#include "rapidcsv/rapidcsv.h"
+#include "easy-encryption/encrypt.h"
 
 const unsigned int MAXCOL = 3;
 const char *COL1 = "Usernames";
@@ -66,11 +66,13 @@ void writefl(const char *filename)
     catch (const std::ios_base::failure &ex)
     {
         std::cout << "No csv file with the name " + std::string(filename) + " found in the directory." << std::endl;
+        file.close();
         return;
     }
     catch (const std::exception &ex)
     {
         std::cout << ex.what() << std::endl;
+        file.close();
         return;
     }
     std::cout << "Info:" << std::endl;
@@ -85,6 +87,7 @@ void writefl(const char *filename)
     }
     if (username == "quit()")
     {
+        file.close();
         return;
     }
     std::cout << "Password: ";
@@ -120,16 +123,18 @@ void editfl(const char *filename)
         usernames = doc.GetColumn<std::string>(COL1);
         passwords = doc.GetColumn<std::string>(COL2);
         etc = doc.GetColumn<std::string>(COL3);
-        file.open(filename);
+        file.open(filename, std::fstream::out | std::fstream::app);
     }
     catch (const std::ios_base::failure &ex)
     {
         std::cout << "No csv file with the name " + std::string(filename) + " found in the directory." << std::endl;
+        file.close();
         return;
     }
     catch (const std::exception &ex)
     {
         std::cout << ex.what() << std::endl;
+        file.close();
         return;
     }
     for (std::string u : usernames)
@@ -140,7 +145,8 @@ void editfl(const char *filename)
     std::getline(std::cin, username);
     if (std::find(usernames.begin(), usernames.end(), username) == usernames.end())
     {
-        std::cout << "Unable to locate " + username + "in FILE: " + filename << std::endl;
+        std::cout << "Unable to locate " + username + " in FILE: " + filename << std::endl;
+        file.close();
         return;
     }
     for (unsigned i = 0; i < usernames.size(); ++i)
@@ -156,7 +162,7 @@ void editfl(const char *filename)
                 usernames.erase(usernames.begin() + i);
                 passwords.erase(passwords.begin() + i);
                 etc.erase(etc.begin() + i);
-                std::cout << "Deleting info associated with u/" + entry[0] << std::endl;
+                std::cout << "Deleting info associated with u/" + username << std::endl;
             }
             else
             {
@@ -169,6 +175,7 @@ void editfl(const char *filename)
                 }
                 if (username == "quit()")
                 {
+                    file.close();
                     return;
                 }
                 std::cout << "Password: ";
