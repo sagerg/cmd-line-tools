@@ -10,6 +10,9 @@ This repo is a collection of CLI apps, scripts, etc. Mostly built with C++.
 - Main File: password.cpp
 - Encryption based on Base64 and Vigenere cipher.
 - Compatibility with Linux/Unix and MacOS.
+- Store passwords in a local csv file.
+- Create your own csv file or use `init` to create one with proper format.
+- Format for csv file: `password` uses `csvparser.h` to read the csv file. File must have three (3) headers in order: **Usernames,Passwords,Etc**
 
 ## Usage:
 
@@ -18,7 +21,7 @@ This repo is a collection of CLI apps, scripts, etc. Mostly built with C++.
 - Edit or delete an entry: `./app w`
 - How-to page: `./app`
 
-By default, your csv file shoud be named 'passwords.csv'. To change this, edit line 4 of 'passwords.cpp'. Then compile with gcc or clang with -std=c++11 or up.
+By default, your csv file shoud be named 'passwords.csv'. To change this and use any filename, edit line 4 of 'passwords.cpp'. Then compile with gcc or clang with -std=c++11 or up.
 
 ## Lookup
 
@@ -44,6 +47,11 @@ By default, your csv file shoud be named 'passwords.csv'. To change this, edit l
 ### Is that it?
 
 Fow now, yes. Will update this every now and then. :-)
+
+### People
+
+- Thanks to github/philipperemy, for b64 and vignere cipher,
+- And to github/d99kris for rapidcsv
 
 ### Todos
 
