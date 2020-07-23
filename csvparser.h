@@ -66,11 +66,13 @@ void writefl(const char *filename)
     catch (const std::ios_base::failure &ex)
     {
         std::cout << "No csv file with the name " + std::string(filename) + " found in the directory." << std::endl;
+        file.close();
         return;
     }
     catch (const std::exception &ex)
     {
         std::cout << ex.what() << std::endl;
+        file.close();
         return;
     }
     std::cout << "Info:" << std::endl;
@@ -85,6 +87,7 @@ void writefl(const char *filename)
     }
     if (username == "quit()")
     {
+        file.close();
         return;
     }
     std::cout << "Password: ";
@@ -125,11 +128,13 @@ void editfl(const char *filename)
     catch (const std::ios_base::failure &ex)
     {
         std::cout << "No csv file with the name " + std::string(filename) + " found in the directory." << std::endl;
+        file.close();
         return;
     }
     catch (const std::exception &ex)
     {
         std::cout << ex.what() << std::endl;
+        file.close();
         return;
     }
     for (std::string u : usernames)
@@ -141,6 +146,7 @@ void editfl(const char *filename)
     if (std::find(usernames.begin(), usernames.end(), username) == usernames.end())
     {
         std::cout << "Unable to locate " + username + " in FILE: " + filename << std::endl;
+        file.close();
         return;
     }
     for (unsigned i = 0; i < usernames.size(); ++i)
@@ -169,6 +175,7 @@ void editfl(const char *filename)
                 }
                 if (username == "quit()")
                 {
+                    file.close();
                     return;
                 }
                 std::cout << "Password: ";
