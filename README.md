@@ -9,7 +9,7 @@ This repo is a collection of CLI apps, scripts, etc. Mostly built with C++.
 
 - Main File: password.cpp
 - Encryption based on Base64 and Vigenere cipher.
-- Compatibility with Linux/Unix and MacOS.
+- Compatibility with Linux/Unix and MacOS. Use -std=c++11 or up.
 - Store passwords in a local csv file.
 - Create your own csv file or use `init` to create one with proper format.
 - Format for csv file: `password` uses `csvparser.h` to read the csv file. File must have three (3) headers in order: **Usernames,Passwords,Etc**
