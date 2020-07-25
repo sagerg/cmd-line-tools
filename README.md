@@ -12,7 +12,6 @@ This repo is a collection of CLI apps, scripts, etc. Mostly built with C++.
 - Compatibility with Linux/Unix and MacOS and uses C++11.
 - Use `init.cpp` to create a CSV file locally with formatted headers.
 - CSV should have three (3) headers in order: **Profiles,Passwords,Usernames**.
-- If you're going to make your own file, leave a newline after the top header.
 
 ## Usage
 
