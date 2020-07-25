@@ -12,7 +12,7 @@ This repo is a collection of CLI apps, scripts, etc. Mostly built with C++.
 - Compatibility with Linux/Unix and MacOS and uses C++11.
 - Use `init.cpp` to create a CSV file locally with formatted headers.
 - CSV should have three (3) headers in order: **Profiles,Passwords,Usernames**.
-- If you're going to make your own file, leave a newline after the headers.
+- If you're going to make your own file, leave a newline after the top header.
 
 ## Usage
 
@@ -21,22 +21,22 @@ Move the binary file or executable to any directory afterwards.
 Make sure `passwords.csv` is in the same directory as the executable.
 
 ```sh
-cd cmd-line-tools/src
+cd cmd-line-tools
 make PASS
 mv PASS ../FOO_DIRECTORY/PASS
 ```
 
 ### Read Mode
 
-PASS will print all profiles to the terminal. Pick one from the list by typing after 'profile/'.
+The script will print all profiles to the terminal. Pick one from the list by typing after 'profile/'.
 
 ```sh
 ./PASS r
-Profiles in current CSV:
+Profiles in FILE: foo.csv
 GitHub
 Twitter
 Facebook
-Retrieving data from profile/ **GitHub**
+Retrieving data from profile/ GitHub
 ```
 
 ### Write Mode
@@ -47,9 +47,9 @@ Add a profile in Write Mode. You can 'quit()' to exit this mode.
 ./PASS w
 Write Mode:
 Info:
-Profile: **Twitter**
-Password: **xyz**
-Username: **John Doe**
+Profile: Twitter
+Password: xyz
+Username: John Doe
 ```
 
 ### Edit Mode:
@@ -62,7 +62,7 @@ The options 'delete()' or 'erase()' is available if you'd like to delete a profi
 GitHub
 Twitter
 Facebook
-Edit profile/ **Twitter**
+Edit profile/ Twitter
 ```
 
 ### Man Page
