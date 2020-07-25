@@ -11,37 +11,42 @@
 #include "easy-encryption/encrypt.h"
 
 const unsigned int MAXCOL = 3;
-const char *COL1 = "Usernames";
+const char *COL1 = "Profiles";
 const char *COL2 = "Passwords";
-const char *COL3 = "Etc";
+const char *COL3 = "Usernames";
 
-std::string key = "SAMPLEKEY";
-
-void readfl(const char *filename)
+/**
+ * @brief Reads from 'passwords.csv' using rapidcsv lib.
+ * 
+ * @param filename File path to 'passwords.csv'.
+ * 
+ * @param key Public key used for encryption. Uses easy-encryption lib.
+ */
+void readfl(const char *filename, std::string key)
 {
     std::cout << "Reading from file..." << std::endl;
     std::vector<std::string> v;
-    std::string username;
+    std::string profile;
     try
     {
         rapidcsv::Document doc(filename);
-        v = doc.GetColumn<std::string>("Usernames");
-        std::cout << "Usernames in current CSV:" << std::endl;
-        for (std::string u : v)
+        v = doc.GetColumn<std::string>(COL1);
+        std::cout << "Profiles in FILE: " + std::string(filename) << std::endl;
+        for (std::string p : v)
         {
-            std::cout << u << "\n";
+            std::cout << p << "\n";
         }
-        std::cout << "Retrieving data from u/";
-        std::getline(std::cin, username);
-        rapidcsv::Document docWithRowH(filename, rapidcsv::LabelParams(0, 0));
-        v = docWithRowH.GetRow<std::string>(username);
-        std::cout << "Info on u/" + username << std::endl;
-        std::cout << "password: " << decrypt(v.at(0), key) << "\n";
-        std::cout << "etc: " << v.at(1) << "\n";
+        std::cout << "Retrieving data from profile/";
+        std::getline(std::cin, profile);
+        rapidcsv::Document docWithRowHeader(filename, rapidcsv::LabelParams(0, 0));
+        v = docWithRowHeader.GetRow<std::string>(profile);
+        std::cout << "Info on profile/" + profile << std::endl;
+        std::cout << "Password: " << decrypt(v.at(0), key) << "\n";
+        std::cout << "Username: " << v.at(1) << "\n";
     }
     catch (const std::ios_base::failure &ex)
     {
-        std::cout << "No csv file with the name " + std::string(filename) + " found in the directory." << std::endl;
+        std::cout << "No csv file with the name '" + std::string(filename) + "' found in the directory." << std::endl;
         return;
     }
     catch (const std::exception &ex)
@@ -51,11 +56,18 @@ void readfl(const char *filename)
     }
 }
 
-void writefl(const char *filename)
+/**
+ * @brief Writes to 'passwords.csv'.
+ * 
+ * @param filename File path to 'passwords.csv'.
+ * 
+ * @param key Public key used for encryption. Uses easy-encryption lib.
+ */
+void writefl(const char *filename, std::string key)
 {
     std::cout << "Write Mode:" << std::endl;
     std::ofstream file;
-    std::string username, password, etc;
+    std::string profile, password, username;
     std::vector<std::string> v;
     try
     {
@@ -65,7 +77,7 @@ void writefl(const char *filename)
     }
     catch (const std::ios_base::failure &ex)
     {
-        std::cout << "No csv file with the name " + std::string(filename) + " found in the directory." << std::endl;
+        std::cout << "No csv file with the name '" + std::string(filename) + "' found in the directory." << std::endl;
         file.close();
         return;
     }
@@ -75,59 +87,66 @@ void writefl(const char *filename)
         file.close();
         return;
     }
-    std::cout << "Info:" << std::endl;
-    std::cout << "Username: ";
-    std::getline(std::cin, username);
-    while (std::find(v.begin(), v.end(), username) != v.end())
+    std::cout << "Enter 'quit()' to exit this mode." << std::endl;
+    std::cout << "Profile: ";
+    std::getline(std::cin, profile);
+    while (std::find(v.begin(), v.end(), profile) != v.end())
     {
-        std::cout << "Username '" + username + "' already exists." << std::endl;
-        std::cout << "Enter another username or quit()" << std::endl;
-        std::cout << "Username: ";
-        std::getline(std::cin, username);
+        std::cout << "Profile '" + profile + "' already exists." << std::endl;
+        std::cout << "Enter another profile or 'quit()'" << std::endl;
+        std::cout << "Profile: ";
+        std::getline(std::cin, profile);
     }
-    if (username == "quit()")
+    if (profile == "quit()")
     {
         file.close();
         return;
     }
     std::cout << "Password: ";
     std::getline(std::cin, password);
-    std::cout << "Etc: ";
-    std::getline(std::cin, etc);
-    if (username.empty())
+    std::cout << "Username: ";
+    std::getline(std::cin, username);
+    if (profile.empty())
     {
-        username = "NULL";
+        profile = "NULL";
     }
     if (password.empty())
     {
         password = "NULL";
     }
-    if (etc.empty())
+    if (username.empty())
     {
-        etc = "NULL";
+        username = "NULL";
     }
-    file << username + "," + encrypt(password, key) + "," + etc + "\n";
+    file << profile + "," + encrypt(password, key) + "," + username + "\n";
     file.close();
 }
 
-void editfl(const char *filename)
+/**
+ * @brief Reads and writes from/to 'passwords.csv' using rapidcsv lib.
+ * 
+ * @param filename File path to 'passwords.csv'.
+ * 
+ * @param key Public key used for encryption. Uses easy-encryption lib.
+ */
+void editfl(const char *filename, std::string key)
 {
     std::cout << "Overwrite Mode:" << std::endl;
     std::ofstream file, tmp;
-    std::string username;
-    std::vector<std::string> usernames, passwords, etc;
+    std::string profile;
+    std::vector<std::string> profiles, passwords, usernames;
     std::string entry[MAXCOL] = {"NULL"};
     try
     {
         rapidcsv::Document doc(filename);
-        usernames = doc.GetColumn<std::string>(COL1);
+        profiles = doc.GetColumn<std::string>(COL1);
         passwords = doc.GetColumn<std::string>(COL2);
-        etc = doc.GetColumn<std::string>(COL3);
+        usernames = doc.GetColumn<std::string>(COL3);
         file.open(filename, std::fstream::out | std::fstream::app);
     }
     catch (const std::ios_base::failure &ex)
     {
-        std::cout << "No csv file with the name " + std::string(filename) + " found in the directory." << std::endl;
+        std::cout << "No csv file with the name '" + std::string(filename) + "' found in the directory." << std::endl;
         file.close();
         return;
     }
@@ -137,40 +156,40 @@ void editfl(const char *filename)
         file.close();
         return;
     }
-    for (std::string u : usernames)
+    for (std::string p : profiles)
     {
-        std::cout << u << std::endl;
+        std::cout << p << std::endl;
     }
-    std::cout << "Edit u/";
-    std::getline(std::cin, username);
-    if (std::find(usernames.begin(), usernames.end(), username) == usernames.end())
+    std::cout << "Edit profile/";
+    std::getline(std::cin, profile);
+    if (std::find(profiles.begin(), profiles.end(), profile) == profiles.end())
     {
-        std::cout << "Unable to locate " + username + " in FILE: " + filename << std::endl;
+        std::cout << "Unable to locate " + profile + " in FILE: " + filename << std::endl;
         file.close();
         return;
     }
-    for (unsigned i = 0; i < usernames.size(); ++i)
+    for (unsigned i = 0; i < profiles.size(); ++i)
     {
-        if (username == usernames.at(i))
+        if (profile == profiles.at(i))
         {
-            std::cout << "New Info:" << std::endl;
-            std::cout << "Username: ";
+            std::cout << "Enter 'delete()' or 'erase()' to remove a profile." << std::endl;
+            std::cout << "New Profile: ";
             std::getline(std::cin, entry[0]);
             if (entry[0] == "delete()" || entry[0] == "erase()")
             {
-                // Delete row
-                usernames.erase(usernames.begin() + i);
+                // Delete account
+                profiles.erase(profiles.begin() + i);
                 passwords.erase(passwords.begin() + i);
-                etc.erase(etc.begin() + i);
-                std::cout << "Deleting info associated with u/" + username << std::endl;
+                usernames.erase(usernames.begin() + i);
+                std::cout << "Deleting info associated with profile/" + profile << std::endl;
             }
             else
             {
-                while (std::find(usernames.begin(), usernames.end(), entry[0]) != usernames.end())
+                while (std::find(profiles.begin(), profiles.end(), entry[0]) != profiles.end())
                 {
-                    std::cout << "Username '" + entry[0] + "' already exists." << std::endl;
-                    std::cout << "Enter another username or quit()" << std::endl;
-                    std::cout << "Username: ";
+                    std::cout << "Profile '" + entry[0] + "' already exists." << std::endl;
+                    std::cout << "Enter another profile or 'quit()'" << std::endl;
+                    std::cout << "Profile: ";
                     std::getline(std::cin, entry[0]);
                 }
                 if (entry[0] == "quit()")
@@ -180,7 +199,7 @@ void editfl(const char *filename)
                 }
                 std::cout << "Password: ";
                 std::getline(std::cin, entry[1]);
-                std::cout << "Etc: ";
+                std::cout << "Username: ";
                 std::getline(std::cin, entry[2]);
                 if (entry[0].empty())
                 {
@@ -194,9 +213,9 @@ void editfl(const char *filename)
                 {
                     entry[2] = "NULL";
                 }
-                usernames.at(i) = entry[0];
+                profiles.at(i) = entry[0];
                 passwords.at(i) = encrypt(entry[1], key);
-                etc.at(i) = entry[2];
+                usernames.at(i) = entry[2];
             }
             break;
         }
@@ -204,9 +223,9 @@ void editfl(const char *filename)
     file.close();
     tmp.open("tmp.csv");
     tmp << std::string(COL1) + "," + COL2 + "," + COL3 + "\n";
-    for (unsigned i = 0; i < usernames.size(); ++i)
+    for (unsigned i = 0; i < profiles.size(); ++i)
     {
-        tmp << usernames.at(i) + "," + passwords.at(i) + "," + etc.at(i) + "\n";
+        tmp << profiles.at(i) + "," + passwords.at(i) + "," + usernames.at(i) + "\n";
     }
     tmp.close();
     try

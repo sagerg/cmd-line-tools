@@ -1,6 +1,4 @@
 
-
-
 *=======================================*
 *   TERMINAL BASED PASSWORD MANAGER     *
 *=======================================*
@@ -11,30 +9,33 @@
 
 FLAGS ALLOWED:
 
-- r: read csv entries
-- w: write a csv entry
-- e: edit, overwrite, or delete csv entry
+'r': Read entries in 'passwords.csv' or a custom csv file.
+'w': Write entries to 'passwords.csv' or a custom file.
+'e': Overwrite or delete a profile from the csv file.
 
-USAGE: ./{executable} {flag}
+USAGE: ./PASS {FLAG} {PUBLIC KEY}
 
-SPECIFICS:
+{FLAG} - Choose from any above.
+{PUBLIC KEY} - If left blank, meaning command line arguments 
+                is less than 3, default key ('PUBLICKEY') will 
+                be used.
 
 - WRITING TO A FILE
     - Possible escape sequences: 'quit()' or Ctrl + C on Linux/MacOS.
 
 - DELETING AN ENTRY
     - Enter edit mode.
-    - Pick an account.
+    - Pick a profile.
     - When asked for a new username, type 'delete()' and hit enter.
 
 NOTES:
 
-- All password entries (2nd column) are encrypted based on B64 and Vigenere ciper (symmetric cipher). 
-    - Thanks github/philipperemy!
-- Etc column left for the user for general use.
+- All password entries (2nd column) are encrypted based on B64 and 
+    Vigenere ciper (symmetric cipher) 
+- CREDIT TO: github/philipperemy
+
 
 GITHUB: https://github.com/sagerg
 WEBSITE: https://sagerg.github.io/
 
-
-
+DEFAULT KEY: 'PUBLICKEY'
